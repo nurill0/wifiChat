@@ -20,6 +20,7 @@ class UserDefaultsManager{
         UserDefaults.standard.set(messages, forKey: "message")
     }
     
+    
     func loadMessage() -> [String] {
         let array =  UserDefaults.standard.array(forKey: "message") as? [String] ?? [String]()
         return array
@@ -30,8 +31,11 @@ class UserDefaultsManager{
         UserDefaults.standard.set(devices, forKey: "device")
     }
     
+    
     func loadDevice() -> [String] {
         let array =  UserDefaults.standard.array(forKey: "device") as? [String] ?? [String]()
         return array
     }
+    
+    
 }

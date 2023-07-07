@@ -8,9 +8,11 @@
 import UIKit
 
 class MessageTableViewCell: UITableViewCell {
-     
+    
+    //MARK: public variables
     public var cellId = "messageCell"
     
+    //MARK: lazy variables
     lazy var containerV: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -19,6 +21,7 @@ class MessageTableViewCell: UITableViewCell {
         
         return view
     }()
+    
     lazy var deviceNameLbl: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +34,6 @@ class MessageTableViewCell: UITableViewCell {
         
         return lbl
     }()
-    
 
     lazy var messageLbl: UILabel = {
         let lbl = UILabel()
@@ -58,22 +60,33 @@ class MessageTableViewCell: UITableViewCell {
         return lbl
     }()
     
+    
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-    
     }
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
     }
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        self.contentView.backgroundColor = #colorLiteral(red: 0.8799401522, green: 0.9148583412, blue: 0.9700120091, alpha: 1)
+        configureUI()
+    }
 
+}
+
+
+
+//MARK: UI
+extension MessageTableViewCell {
+    
+    
+    fileprivate func configureUI(){
+        self.contentView.backgroundColor = #colorLiteral(red: 0.8799401522, green: 0.9148583412, blue: 0.9700120091, alpha: 1)
         self.contentView.addSubview(containerV)
         NSLayoutConstraint.activate([
             containerV.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
@@ -95,8 +108,6 @@ class MessageTableViewCell: UITableViewCell {
             deviceNameLbl.rightAnchor.constraint(equalTo: self.timeLbl.leftAnchor, constant: -5)
         ])
         
-       
-        
         containerV.addSubview(messageLbl)
         NSLayoutConstraint.activate([
             messageLbl.topAnchor.constraint(equalTo: self.deviceNameLbl.bottomAnchor, constant: 8),
@@ -105,5 +116,6 @@ class MessageTableViewCell: UITableViewCell {
             messageLbl.rightAnchor.constraint(equalTo: self.containerV.rightAnchor, constant: -8)
         ])
     }
-
+    
+    
 }

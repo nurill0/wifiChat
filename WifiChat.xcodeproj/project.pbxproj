@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB3A4CAF2A339DE900BE46F1 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3A4CAE2A339DE900BE46F1 /* UserDefaultsManager.swift */; };
 		FB41B5922A32022E00C03BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41B5912A32022E00C03BC7 /* AppDelegate.swift */; };
 		FB41B5942A32022E00C03BC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41B5932A32022E00C03BC7 /* SceneDelegate.swift */; };
 		FB41B5962A32022E00C03BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41B5952A32022E00C03BC7 /* ViewController.swift */; };
@@ -14,9 +15,11 @@
 		FB41B59C2A32022E00C03BC7 /* WifiChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB41B59A2A32022E00C03BC7 /* WifiChat.xcdatamodeld */; };
 		FB41B59E2A32022F00C03BC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB41B59D2A32022F00C03BC7 /* Assets.xcassets */; };
 		FB41B5A12A32022F00C03BC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB41B59F2A32022F00C03BC7 /* LaunchScreen.storyboard */; };
+		FB41B5A92A320FD700C03BC7 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41B5A82A320FD700C03BC7 /* MessageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB3A4CAE2A339DE900BE46F1 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		FB41B58E2A32022E00C03BC7 /* WifiChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WifiChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB41B5912A32022E00C03BC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB41B5932A32022E00C03BC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		FB41B59D2A32022F00C03BC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB41B5A02A32022F00C03BC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB41B5A22A32022F00C03BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB41B5A82A320FD700C03BC7 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,58 @@
 		FB41B5902A32022E00C03BC7 /* WifiChat */ = {
 			isa = PBXGroup;
 			children = (
-				FB41B5912A32022E00C03BC7 /* AppDelegate.swift */,
-				FB41B5932A32022E00C03BC7 /* SceneDelegate.swift */,
-				FB41B5952A32022E00C03BC7 /* ViewController.swift */,
-				FB41B5972A32022E00C03BC7 /* Main.storyboard */,
+				FB981E152A45D9FC00959B31 /* DataBase */,
+				FB981E142A45D9D500959B31 /* Home */,
+				FB981E132A45D9C900959B31 /* Views */,
+				FB981E122A45D9BA00959B31 /* App */,
 				FB41B59D2A32022F00C03BC7 /* Assets.xcassets */,
-				FB41B59F2A32022F00C03BC7 /* LaunchScreen.storyboard */,
 				FB41B5A22A32022F00C03BC7 /* Info.plist */,
 				FB41B59A2A32022E00C03BC7 /* WifiChat.xcdatamodeld */,
 			);
 			path = WifiChat;
+			sourceTree = "<group>";
+		};
+		FB981E122A45D9BA00959B31 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FB41B5912A32022E00C03BC7 /* AppDelegate.swift */,
+				FB41B5932A32022E00C03BC7 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FB981E132A45D9C900959B31 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FB41B59F2A32022F00C03BC7 /* LaunchScreen.storyboard */,
+				FB41B5972A32022E00C03BC7 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FB981E142A45D9D500959B31 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FB981E162A45DA1500959B31 /* cell */,
+				FB41B5952A32022E00C03BC7 /* ViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FB981E152A45D9FC00959B31 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				FB3A4CAE2A339DE900BE46F1 /* UserDefaultsManager.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		FB981E162A45DA1500959B31 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				FB41B5A82A320FD700C03BC7 /* MessageTableViewCell.swift */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +189,9 @@
 			files = (
 				FB41B59C2A32022E00C03BC7 /* WifiChat.xcdatamodeld in Sources */,
 				FB41B5962A32022E00C03BC7 /* ViewController.swift in Sources */,
+				FB3A4CAF2A339DE900BE46F1 /* UserDefaultsManager.swift in Sources */,
 				FB41B5922A32022E00C03BC7 /* AppDelegate.swift in Sources */,
+				FB41B5A92A320FD700C03BC7 /* MessageTableViewCell.swift in Sources */,
 				FB41B5942A32022E00C03BC7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

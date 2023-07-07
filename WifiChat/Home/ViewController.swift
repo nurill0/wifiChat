@@ -11,23 +11,27 @@ import MultipeerConnectivity
 
 class ViewController: UIViewController {
     
+    //MARK:  variables
     var messageTime: [String] = []
     var deviceName: [String] = []
     var isConnected = false
     var allMessages: [String] = []
     var userDefault = UserDefaultsManager.shared
     var currentTime = ""
+    
     //MARK: private constants
     private let serviceType = "mctest"
     let currentDate = Date() // Get the current date and time
     let dateFormatter = DateFormatter() // Create a date formatter
-
-    //MARK: private
+    
+    //MARK: private variables
     private var multipeerSession: MCSession?
     private var peerId = MCPeerID(displayName: UIDevice.current.name)
     private var browser: MCNearbyServiceBrowser?
     private var advertiser: MCNearbyServiceAdvertiser?
     
+    
+    //MARK: lazy variables
     lazy var containerV : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +74,7 @@ class ViewController: UIViewController {
         tbV.separatorStyle = .none
         tbV.rowHeight = UITableView.automaticDimension
         tbV.backgroundColor = #colorLiteral(red: 0.8799401522, green: 0.9148583412, blue: 0.9700120091, alpha: 1)
-
+        
         return tbV
     }()
     
@@ -79,19 +83,17 @@ class ViewController: UIViewController {
 
 
 
-//life cycle
+//MARK: view controller life cycle
 extension ViewController {
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Waiting..."
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "antenna.radiowaves.left.and.right")?.withTintColor(.black, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(getConnect))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(clearMessages))
-        
-        
-        
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,16 +108,18 @@ extension ViewController {
         view.addGestureRecognizer(tap)
     }
     
+    
 }
 
 
 
-//actions
+//MARK: actions
 extension ViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
     
     @objc func clearMessages(){
         allMessages = []
@@ -144,7 +148,6 @@ extension ViewController {
     
     @objc func sendMessages(){
         guard let message = messageTextField.text else {return}
-       
         sendMessage(message: message)
         messageTime.append(currentTime)
         deviceName.append(peerId.displayName)
@@ -154,13 +157,14 @@ extension ViewController {
         messageTextField.text = ""
     }
     
+    
 }
 
 
 
 //MARK: tableView delegate
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
-    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allMessages.count
@@ -202,11 +206,9 @@ private extension ViewController {
         if let browser = browser {
             browser.stopBrowsingForPeers()
         }
-        
         if let advertiser = advertiser {
             advertiser.stopAdvertisingPeer()
         }
-        
         multipeerSession?.disconnect()
     }
     
@@ -219,7 +221,9 @@ private extension ViewController {
         }catch{}
     }
     
+    
 }
+
 
 
 //MARK: MCSessionDelegate
@@ -280,6 +284,7 @@ extension ViewController: MCSessionDelegate {
 
 //MARK: MCNearbyServiceAdvertiserDelegate
 extension ViewController: MCNearbyServiceAdvertiserDelegate {
+    
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         invitationHandler(true, multipeerSession)
     }
@@ -299,7 +304,6 @@ extension ViewController: MCNearbyServiceBrowserDelegate {
     
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        
     }
     
 }
